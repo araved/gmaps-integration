@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>391800051181-hh5865pceib97u6tj34gdk73hllh7d3r.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.391800051181-hh5865pceib97u6tj34gdk73hllh7d3r</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDXT7RPic5qMTmTtYZvMfkXanOstqnTuuE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>391800051181</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.appsensiTest</string>
+	<key>PROJECT_ID</key>
+	<string>appsensi-test</string>
+	<key>STORAGE_BUCKET</key>
+	<string>appsensi-test.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:391800051181:ios:b7af02563e7aeab5a403e4</string>
+	<key>DATABASE_URL</key>
+	<string>https://appsensi-test.firebaseio.com</string>
+</dict>
+</plist>
