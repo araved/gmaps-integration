@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "391800051181",
+    "firebase_url": "https://appsensi-test.firebaseio.com",
+    "project_id": "appsensi-test",
+    "storage_bucket": "appsensi-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391800051181:android:6474f1c9ebd243d3a403e4",
+        "android_client_info": {
+          "package_name": "com.example.appsensi_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "391800051181-ufqhcm5noq5vkpn32ku6jbtvsjpof2d7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7az4zI-GzSiUxcZZeFz-MI3iFxte5EAg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "391800051181-ufqhcm5noq5vkpn32ku6jbtvsjpof2d7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
