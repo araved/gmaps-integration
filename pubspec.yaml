@@ -28,6 +28,8 @@ dependencies:
   intl: ^0.16.1
   firebase_auth: ^0.18.0
   google_maps_flutter: ^1.0.2
+  connectivity: ^0.4.9+3
+  flutter_statusbarcolor: ^0.2.3
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -48,11 +50,9 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - Assets/Images/Firebase_logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -65,8 +65,14 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
+  fonts:
+   - family: NunitoSans
+     fonts:
+      - asset: Assets/Fonts/NunitoSans-Black.ttf
+      - asset: Assets/Fonts/NunitoSans-Bold.ttf
+        weight: 700
+      - asset: Assets/Fonts/NunitoSans-Italic.ttf
+        style: italic 
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
