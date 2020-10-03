@@ -1,7 +1,10 @@
 import 'package:appsensi_test/Models/User.dart';
+import 'package:appsensi_test/Models/atm.dart';
 import 'package:appsensi_test/Models/place.dart';
+import 'package:appsensi_test/Screens/atm_page.dart';
 import 'package:appsensi_test/Screens/login_page.dart';
 import 'package:appsensi_test/Screens/register_page.dart';
+import 'package:appsensi_test/Screens/restaurant_page.dart';
 import 'package:appsensi_test/Services/locator.dart';
 import 'package:appsensi_test/Services/login_checker.dart';
 import 'package:appsensi_test/Services/places_service.dart';
@@ -45,11 +48,12 @@ class MyApp extends StatelessWidget {
                     return (position !=null) ? _placesService.getRestaurant(position.latitude, position.longitude) : null;
                   },
                 ),
-                // ProxyProvider<Position,Future<List<Place>>>(
-                //   update: (context, position, places) {
-                //     return (position !=null) ? _placesService.getAtm(position.latitude, position.longitude) : null;
-                //   },
-                // )
+                
+                ProxyProvider<Position,Future<List<Atm>>>(
+                  update: (context, position, places) {
+                    return (position !=null) ? _placesService.getAtm(position.latitude, position.longitude) : null;
+                  },
+                )
               ],
               child: MaterialApp(
                   debugShowCheckedModeBanner: false,
@@ -62,6 +66,9 @@ class MyApp extends StatelessWidget {
                     Checker.routeName: (ctx) => Checker(),
                     Register.nameRoute: (ctx) => Register(),
                     Home.nameRoute: (ctx) => Home(),
+                    RestaurantScreen.nameRoute: (ctx) => RestaurantScreen(),
+                    AtmScreen.nameRoute: (ctx) => AtmScreen(),
+
                     
                   }),
             );

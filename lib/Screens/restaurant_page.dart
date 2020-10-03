@@ -1,4 +1,5 @@
 import 'package:appsensi_test/Models/place.dart';
+import 'package:appsensi_test/Services/marker_service.dart';
 import 'package:appsensi_test/Widget/header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,6 +10,7 @@ import 'package:provider/provider.dart';
 import 'home.dart';
 
 class RestaurantScreen extends StatefulWidget {
+  static const nameRoute = '/restaurant';
   @override
   _RestaurantScreenState createState() => _RestaurantScreenState();
 }
@@ -26,6 +28,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
   Widget build(BuildContext context) {
     final currentLocation = Provider.of<Position>(context);
     final placesProvider = Provider.of<Future<List<Place>>>(context);
+    final markerService = MarkerService();
 
     return FutureProvider(
       create: (context) => placesProvider,
@@ -36,9 +39,10 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
           children: [
             SizedBox(height: 70),
             Header(),
-            (currentLocation != null)
+            (currentLocation != null )
                 ? Consumer<List<Place>>(
                     builder: (_, places, __) {
+                      var markers = (places != null) ? markerService.getMarkers(places) : List<Marker>();
                       return Column(
                         children: [
                           Container(
@@ -52,6 +56,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                               zoomGesturesEnabled: true,
                               myLocationEnabled: true,
                               onMapCreated: _onMapCreated,
+                              markers: Set<Marker>.of(markers),
                             ),
                           ),
                           Container(
@@ -83,7 +88,8 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                 itemCount: 10,
                                 itemBuilder: (context, index) {
                                   return ListTile(
-                                    title: Text(places[index].name),
+                                    title: Text(places[index].name, style: TextStyle(fontWeight: FontWeight.bold)),
+                                    subtitle: Text(places[index].vicinity),
                                   );
                                 },
                               ),

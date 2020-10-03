@@ -1,7 +1,7 @@
 import 'package:appsensi_test/Models/User.dart';
 import 'package:appsensi_test/Models/place.dart';
-import 'package:appsensi_test/Screens/atm.dart';
-import 'package:appsensi_test/Screens/restaurant.dart';
+import 'package:appsensi_test/Screens/atm_page.dart';
+import 'package:appsensi_test/Screens/restaurant_page.dart';
 import 'package:appsensi_test/Services/auth.dart';
 import 'package:appsensi_test/Services/login_checker.dart';
 import 'package:appsensi_test/Widget/header.dart';
@@ -57,32 +57,100 @@ class _HomeState extends State<Home> {
     return FutureProvider(
       create: (context) => placesProvider,
       child: Scaffold(
-          bottomNavigationBar: BottomNavigationBar(items: [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.restaurant), label: 'Restaurant'),
-            BottomNavigationBarItem(icon: Icon(Icons.atm), label: 'ATM')
-          ]),
+          // persistentFooterButtons: [
+          //   IconButton(icon: Icon(Icons.restaurant), onPressed: null,),
+          //             IconButton(icon: Icon(Icons.restaurant), onPressed: null,)
+
+          // ],
+          // bottomNavigationBar:
+
+          //  BottomNavigationBar(items: [
+          //   BottomNavigationBarItem(
+          //       icon: Icon(Icons.restaurant), label: 'Restaurant', ),
+          //   BottomNavigationBarItem(icon: Icon(Icons.atm), label: 'ATM')
+          // ],
+          // currentIndex: _currentIndex,
+          // onTap: (value) => _pages[value],),
           body: AnnotatedRegion<SystemUiOverlayStyle>(
-            value: SystemUiOverlayStyle.dark,
-            child: Column(
+        value: SystemUiOverlayStyle.dark,
+        child: Column(
+          children: [
+            SizedBox(height: 70),
+            Header(),
+            (currentLocation != null)
+                ? Container(
+                    height: MediaQuery.of(context).size.height / 1.35,
+                    child: GoogleMap(
+                      initialCameraPosition: CameraPosition(
+                          target: LatLng(currentLocation.latitude,
+                              currentLocation.longitude),
+                          zoom: 15),
+                      myLocationEnabled: true,
+                      onMapCreated: _onMapCreated,
+                    ),
+                  )
+                : Center(
+                    child: CircularProgressIndicator(),
+                  ),
+            Expanded(
+                child: ButtonBar(
+                  alignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SizedBox(height: 70),
-                Header(),
-                (currentLocation != null)
-                    ? Expanded(
-                        child: GoogleMap(
-                          initialCameraPosition: CameraPosition(
-                              target: LatLng(currentLocation.latitude, currentLocation.longitude), zoom: 15),
-                          myLocationEnabled: true,
-                          onMapCreated: _onMapCreated,
-                        ),
-                      )
-                    : Center(
-                        child: CircularProgressIndicator(),
-                      )
+                FlatButton(
+  child: Column(
+    mainAxisSize: MainAxisSize.min,
+    children: <Widget>[
+      Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Icon(
+          Icons.restaurant,
+          color: Colors.black,
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(2.0),
+        child: Text(
+          "Restaurant",
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    ],
+  ),
+  onPressed: () => Navigator.of(context).pushNamed(RestaurantScreen.nameRoute),
+),
+                FlatButton(
+  child: Column(
+    mainAxisSize: MainAxisSize.min,
+    children: <Widget>[
+      Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Icon(
+          Icons.atm,
+          color: Colors.black,
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(2.0),
+        child: Text(
+          "Atm",
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    ],
+  ),
+  onPressed: () => Navigator.of(context).pushNamed(AtmScreen.nameRoute),
+),
               ],
-            ),
-          )),
+            ))
+          ],
+        ),
+      )),
     );
   }
 }

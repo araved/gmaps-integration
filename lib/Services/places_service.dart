@@ -1,3 +1,4 @@
+import 'package:appsensi_test/Models/atm.dart';
 import 'package:appsensi_test/Models/place.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
@@ -11,15 +12,15 @@ class PlacesService {
     var response = await http.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$lat,$lng&type=restaurant&rankby=distance&key=$key');
     var result = convert.jsonDecode(response.body);
     var decode = result['results'] as List;
-    decode.map((places) => Place.fromJson(places)).toList();
+   return decode.map((places) => Place.fromJson(places)).toList(growable: false);
   }
 
-  //  Future<List<Place>> getAtm(double lat, double lng) async
-  // {
-  //   var response = await http.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$lat,$lng&type=atm&rankby=distance&key=$key');
-  //   var result = convert.jsonDecode(response.body);
-  //   var decode = result['results'] as List;
-  //   decode.map((places) => Place.fromJson(places)).toList();
-  // }
+   Future<List<Atm>> getAtm(double lat, double lng) async
+  {
+    var response = await http.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$lat,$lng&type=atm&rankby=distance&key=$key');
+    var result = convert.jsonDecode(response.body);
+    var decode = result['results'] as List;
+    return decode.map((places) => Atm.fromJson(places)).toList(growable: false);
+  }
   
 }
