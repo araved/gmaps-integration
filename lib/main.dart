@@ -4,13 +4,17 @@ import 'package:appsensi_test/Screens/register_page.dart';
 import 'package:appsensi_test/Services/login_checker.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
+import 'Screens/home.dart';
 import 'Services/auth.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.black
+  ));
   runApp(MyApp());
 }
 
@@ -28,7 +32,8 @@ class MyApp extends StatelessWidget {
 
             return MultiProvider(
               providers: [
-                StreamProvider<CurrentUser>.value(value: Auth().currentuser)
+                StreamProvider<CurrentUser>.value(value: Auth().currentuser),
+                Provider.value(value: Auth()),
               ],
               child: MaterialApp(
                   debugShowCheckedModeBanner: false,
@@ -39,7 +44,8 @@ class MyApp extends StatelessWidget {
                   routes: {
                     LoginScreen.routeName: (ctx) => LoginScreen(),
                     Checker.routeName: (ctx) => Checker(),
-                    Register.nameRoute: (ctx) => Register()
+                    Register.nameRoute: (ctx) => Register(),
+                    Home.nameRoute: (ctx) => Home(),
                     
                   }),
             );

@@ -3,11 +3,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class Auth {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  
 
   //Get Current User
   CurrentUser _user(User user){
     return user !=null ? CurrentUser(user.uid) : null;
   }
+
+
 
   Stream<CurrentUser> get currentuser {
     return _auth.authStateChanges().map(_user);
