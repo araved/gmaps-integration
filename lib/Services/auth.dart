@@ -10,7 +10,9 @@ class Auth {
     return user !=null ? CurrentUser(user.uid) : null;
   }
 
-
+  Future getCurrentUser() async{
+    return _auth.currentUser;
+  }
 
   Stream<CurrentUser> get currentuser {
     return _auth.authStateChanges().map(_user);

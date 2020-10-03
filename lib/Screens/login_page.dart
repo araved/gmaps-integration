@@ -22,6 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
     'email': '',
     'password': '',
   };
+  var _isLoading = false;
 
   void _setVisibility() {
     setState(() {
@@ -35,8 +36,14 @@ class _LoginScreenState extends State<LoginScreen> {
       return;
     }
     _formKey.currentState.save();
+    setState(() {
+      _isLoading = true;
+    });
     await _auth.signInWithEmailAndPassword(
         _authData['email'], _authData['password']);
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   @override
@@ -132,7 +139,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(
                       height: 30,
                     ),
-                    Button('Login', _submit),
+                    if (_isLoading)
+                      CircularProgressIndicator()
+                    else
+                      Button('Login', _submit),
                     Container(
                       child: Center(
                         child: Row(

@@ -39,7 +39,7 @@ class _RegisterState extends State<Register> {
     _formKey.currentState.save();
     await _auth.registerUser(
         _authData['email'], _authData['password'], _authData['name']);
-    Navigator.of(context).pushReplacementNamed(Home.nameRoute);
+    Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
   }
 
   @override
