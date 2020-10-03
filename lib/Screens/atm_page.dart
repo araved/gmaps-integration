@@ -53,7 +53,7 @@ class _AtmScreenState extends State<AtmScreen> {
                               initialCameraPosition: CameraPosition(
                                   target: LatLng(currentLocation.latitude,
                                       currentLocation.longitude),
-                                  zoom: 16.0),
+                                  zoom: 17.0),
                               zoomGesturesEnabled: true,
                               myLocationEnabled: true,
                               onMapCreated: _onMapCreated,

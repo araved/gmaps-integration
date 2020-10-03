@@ -52,7 +52,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                               initialCameraPosition: CameraPosition(
                                   target: LatLng(currentLocation.latitude,
                                       currentLocation.longitude),
-                                  zoom: 16.0),
+                                  zoom: 18),
                               zoomGesturesEnabled: true,
                               myLocationEnabled: true,
                               onMapCreated: _onMapCreated,
@@ -84,7 +84,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                           ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height / 3,
-                            child: ListView.builder(
+                            child: (places != null ) ? ListView.builder(
                                 itemCount: 10,
                                 itemBuilder: (context, index) {
                                   return ListTile(
@@ -92,7 +92,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                     subtitle: Text(places[index].vicinity),
                                   );
                                 },
-                              ),
+                              ): CircularProgressIndicator(),
                           ),
                         ],
                       );
