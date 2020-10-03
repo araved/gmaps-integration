@@ -20,16 +20,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  
-
-  int _currentIndex =0;
-    List<Map<String, Object>> _pages;
-@override
+  int _currentIndex = 0;
+  List<Map<String, Object>> _pages;
+  @override
   void initState() {
     _pages = [
       {
         'page': RestaurantScreen(),
-        
       },
       {
         'page': AtmScreen(),
@@ -43,6 +40,7 @@ class _HomeState extends State<Home> {
       _currentIndex = index;
     });
   }
+
   GoogleMapController mapController;
 
   _onMapCreated(GoogleMapController controller) {
@@ -53,36 +51,38 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-      final currentLocation = Provider.of<Position>(context);
-      final placesProvide = Provider.of<Future<List<Place>>>(context);
+    final currentLocation = Provider.of<Position>(context);
+    final placesProvider = Provider.of<Future<List<Place>>>(context);
 
-    return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-
-        items: [
-        BottomNavigationBarItem(
-            icon: Icon(Icons.restaurant), label: 'Restaurant'),
-        BottomNavigationBarItem(icon: Icon(Icons.atm), label: 'ATM')
-      ]),
-      body:  AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.dark,
-        child: Column(
-          children: [
-            SizedBox(height: 70),
-            Header(),
-            (currentLocation !=null) ? Expanded(
-              child: GoogleMap(
-                initialCameraPosition: CameraPosition(
-                    target: LatLng(3.127030, 101.617510), zoom: 15),
-                myLocationEnabled: true,
-                onMapCreated: _onMapCreated,
-              ),
-            ):  Center(
-        child: CircularProgressIndicator(),)
-          ],
-        ),
-      ) 
-      
+    return FutureProvider(
+      create: (context) => placesProvider,
+      child: Scaffold(
+          bottomNavigationBar: BottomNavigationBar(items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.restaurant), label: 'Restaurant'),
+            BottomNavigationBarItem(icon: Icon(Icons.atm), label: 'ATM')
+          ]),
+          body: AnnotatedRegion<SystemUiOverlayStyle>(
+            value: SystemUiOverlayStyle.dark,
+            child: Column(
+              children: [
+                SizedBox(height: 70),
+                Header(),
+                (currentLocation != null)
+                    ? Expanded(
+                        child: GoogleMap(
+                          initialCameraPosition: CameraPosition(
+                              target: LatLng(currentLocation.latitude, currentLocation.longitude), zoom: 15),
+                          myLocationEnabled: true,
+                          onMapCreated: _onMapCreated,
+                        ),
+                      )
+                    : Center(
+                        child: CircularProgressIndicator(),
+                      )
+              ],
+            ),
+          )),
     );
   }
 }

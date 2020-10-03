@@ -45,11 +45,11 @@ class MyApp extends StatelessWidget {
                     return (position !=null) ? _placesService.getRestaurant(position.latitude, position.longitude) : null;
                   },
                 ),
-                ProxyProvider<Position,Future<List<Place>>>(
-                  update: (context, position, places) {
-                    return (position !=null) ? _placesService.getAtm(position.latitude, position.longitude) : null;
-                  },
-                )
+                // ProxyProvider<Position,Future<List<Place>>>(
+                //   update: (context, position, places) {
+                //     return (position !=null) ? _placesService.getAtm(position.latitude, position.longitude) : null;
+                //   },
+                // )
               ],
               child: MaterialApp(
                   debugShowCheckedModeBanner: false,

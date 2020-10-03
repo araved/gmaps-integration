@@ -14,12 +14,12 @@ class PlacesService {
     decode.map((places) => Place.fromJson(places)).toList();
   }
 
-   Future<List<Place>> getAtm(double lat, double lng) async
-  {
-    var response = await http.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$lat,$lng&type=atm&rankby=distance&key=$key');
-    var result = convert.jsonDecode(response.body);
-    var decode = result['results'] as List;
-    decode.map((places) => Place.fromJson(places)).toList();
-  }
+  //  Future<List<Place>> getAtm(double lat, double lng) async
+  // {
+  //   var response = await http.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$lat,$lng&type=atm&rankby=distance&key=$key');
+  //   var result = convert.jsonDecode(response.body);
+  //   var decode = result['results'] as List;
+  //   decode.map((places) => Place.fromJson(places)).toList();
+  // }
   
 }
