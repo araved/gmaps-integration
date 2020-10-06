@@ -1,5 +1,7 @@
 import 'package:appsensi_test/Models/User.dart';
+import 'package:appsensi_test/Widget/error_handler.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 class Auth {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -19,18 +21,21 @@ class Auth {
   }
 
   //Login with email and password
-  Future signInWithEmailAndPassword(String email, String pwd) async
+  Future signInWithEmailAndPassword(String email, String pwd, BuildContext context) async
   {
     try {
       UserCredential user = await _auth.signInWithEmailAndPassword(email: email, password: pwd);
       return user;
     } catch (e) {
       print(e.toString());
-      return null;
+      return showDialog(context: context, 
+      barrierDismissible: true,
+      child: Error('Invalid email or password')
+      );
     }
   }
   //Register User
-  Future registerUser(String email, String pwd, String name) async
+  Future registerUser(String email, String pwd, String name, BuildContext context) async
   {
     try {
       UserCredential user = await _auth.createUserWithEmailAndPassword(email: email, password: pwd);
@@ -38,6 +43,9 @@ class Auth {
         _auth.currentUser.updateProfile(displayName: name);
       }
     } catch (e) {
+       return showDialog(context: context, 
+      barrierDismissible: true,
+      child: Error('User already existed'));
     }
   }
 

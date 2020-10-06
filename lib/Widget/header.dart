@@ -2,6 +2,7 @@ import 'package:appsensi_test/Services/auth.dart';
 import 'package:appsensi_test/Services/login_checker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Header extends StatelessWidget {
   final Auth _auth = Auth();
@@ -13,6 +14,9 @@ class Header extends StatelessWidget {
     return Padding(
               padding: const EdgeInsets.all(15.0),
               child: Container(
+                // decoration: BoxDecoration(
+                //   border: Border.
+                // ),
                 width: double.infinity,
                 child: Row(
                   children: [
@@ -37,10 +41,12 @@ class Header extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(width: 90),
+                    SizedBox(width: MediaQuery.of(context).size.width /6),
                     RaisedButton(
+                      
                       onPressed: () async {
                         _auth.signOut();
+                        
                         Navigator.of(context)
                             .pushReplacementNamed(Checker.routeName);
                       },

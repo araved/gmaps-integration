@@ -20,26 +20,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _currentIndex = 0;
-  List<Map<String, Object>> _pages;
-  @override
-  // void initState() {
-  //   _pages = [
-  //     {
-  //       'page': RestaurantScreen(),
-  //     },
-  //     {
-  //       'page': AtmScreen(),
-  //     },
-  //   ];
-  //   super.initState();
-  // }
-
-  // void _selectPage(int index) {
-  //   setState(() {
-  //     _currentIndex = index;
-  //   });
-  // }
+  
 
   GoogleMapController mapController;
 
@@ -61,9 +42,10 @@ class _HomeState extends State<Home> {
         value: SystemUiOverlayStyle.dark,
         child: Column(
           children: [
-            SizedBox(height: 70),
+            SizedBox(height: MediaQuery.of(context).size.height >= 800 ? 70
+                   :MediaQuery.of(context).size.height /30),
             Header(),
-            (currentLocation != null)
+            currentLocation != null
                 ? Container(
                     height: MediaQuery.of(context).size.height / 1.35,
                     child: GoogleMap(

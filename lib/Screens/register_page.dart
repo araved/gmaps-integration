@@ -38,7 +38,7 @@ class _RegisterState extends State<Register> {
     }
     _formKey.currentState.save();
     await _auth.registerUser(
-        _authData['email'], _authData['password'], _authData['name']);
+        _authData['email'], _authData['password'], _authData['name'], context);
     Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
   }
 
@@ -53,7 +53,8 @@ class _RegisterState extends State<Register> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(height: 100),
+                  SizedBox(height: MediaQuery.of(context).size.height >= 800 ? 100
+                   :MediaQuery.of(context).size.height /30),
                   Row(
                     children: [
                       IconButton(
@@ -89,6 +90,7 @@ class _RegisterState extends State<Register> {
                               borderRadius: BorderRadius.circular(10))),
                       keyboardType: TextInputType.text,
                       textCapitalization: TextCapitalization.words,
+                      autocorrect: false,
                       validator: (value) {
                         if (value.isEmpty) {
                           return 'Please enter the field';

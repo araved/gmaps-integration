@@ -1,5 +1,6 @@
 import 'package:appsensi_test/Screens/register_page.dart';
 import 'package:appsensi_test/Services/auth.dart';
+import 'package:appsensi_test/Services/login_checker.dart';
 import 'package:appsensi_test/Widget/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -40,7 +41,8 @@ class _LoginScreenState extends State<LoginScreen> {
       _isLoading = true;
     });
     await _auth.signInWithEmailAndPassword(
-        _authData['email'], _authData['password']);
+        _authData['email'], _authData['password'], context);
+        Navigator.of(context).pushNamed(Checker.routeName);
     setState(() {
       _isLoading = false;
     });

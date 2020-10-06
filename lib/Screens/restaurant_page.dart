@@ -37,7 +37,8 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
         value: SystemUiOverlayStyle.dark,
         child: Column(
           children: [
-            SizedBox(height: 70),
+             SizedBox(height: MediaQuery.of(context).size.height >= 800 ? 70
+                   :MediaQuery.of(context).size.height /30),
             Header(),
             (currentLocation != null )
                 ? Consumer<List<Place>>(

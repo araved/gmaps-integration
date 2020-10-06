@@ -38,12 +38,13 @@ class _AtmScreenState extends State<AtmScreen> {
         value: SystemUiOverlayStyle.dark,
         child: Column(
           children: [
-            SizedBox(height: 70),
+            SizedBox(height: MediaQuery.of(context).size.height >= 800 ? 70
+                   :MediaQuery.of(context).size.height /30),
             Header(),
             (currentLocation != null )
                 ? Consumer<List<Atm>>(
                     builder: (_, places, __) {
-                      var markers = (places != null) ? markerService.getAtm(places) : List<Marker>();
+                      var markers = places != null ? markerService.getAtm(places) : List<Marker>();
                       return Column(
                         children: [
                           Container(

@@ -9,6 +9,10 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="appsensi_test"
         android:icon="@mipmap/ic_launcher">
+        <meta-data
+            android:name="com.google.android.geo.AIzaSyB7az4zI-GzSiUxcZZeFz-MI3iFxte5EAg"
+            android:value="AIzaSyB7az4zI-GzSiUxcZZeFz-MI3iFxte5EAg"
+            />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -33,10 +37,7 @@
               android:name="io.flutter.embedding.android.SplashScreenDrawable"
               android:resource="@drawable/launch_background"
               />
-              <meta-data
-              android:name="com.google.android.geo.AIzaSyCNVgIjMtxl6QDPNaa2mEb6mgsQMoNvTBQ"
-              android:value="AIzaSyCNVgIjMtxl6QDPNaa2mEb6mgsQMoNvTBQ"
-              />
+            
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -48,4 +49,6 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 </manifest>
