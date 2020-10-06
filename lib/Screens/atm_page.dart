@@ -85,7 +85,7 @@ class _AtmScreenState extends State<AtmScreen> {
                           ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height / 3,
-                            child: ListView.builder(
+                            child: places == null ? CircularProgressIndicator() :ListView.builder(
                                 itemCount: 10,
                                 itemBuilder: (context, index) {
                                   return ListTile(

@@ -84,7 +84,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                           ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height / 3,
-                            child: (places != null ) ? ListView.builder(
+                            child: places == null ? CircularProgressIndicator() : ListView.builder(
                                 itemCount: 10,
                                 itemBuilder: (context, index) {
                                   return ListTile(
@@ -92,7 +92,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                                     subtitle: Text(places[index].vicinity),
                                   );
                                 },
-                              ): CircularProgressIndicator(),
+                              ),
                           ),
                         ],
                       );

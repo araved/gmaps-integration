@@ -23,23 +23,23 @@ class _HomeState extends State<Home> {
   int _currentIndex = 0;
   List<Map<String, Object>> _pages;
   @override
-  void initState() {
-    _pages = [
-      {
-        'page': RestaurantScreen(),
-      },
-      {
-        'page': AtmScreen(),
-      },
-    ];
-    super.initState();
-  }
+  // void initState() {
+  //   _pages = [
+  //     {
+  //       'page': RestaurantScreen(),
+  //     },
+  //     {
+  //       'page': AtmScreen(),
+  //     },
+  //   ];
+  //   super.initState();
+  // }
 
-  void _selectPage(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
+  // void _selectPage(int index) {
+  //   setState(() {
+  //     _currentIndex = index;
+  //   });
+  // }
 
   GoogleMapController mapController;
 
@@ -57,20 +57,6 @@ class _HomeState extends State<Home> {
     return FutureProvider(
       create: (context) => placesProvider,
       child: Scaffold(
-          // persistentFooterButtons: [
-          //   IconButton(icon: Icon(Icons.restaurant), onPressed: null,),
-          //             IconButton(icon: Icon(Icons.restaurant), onPressed: null,)
-
-          // ],
-          // bottomNavigationBar:
-
-          //  BottomNavigationBar(items: [
-          //   BottomNavigationBarItem(
-          //       icon: Icon(Icons.restaurant), label: 'Restaurant', ),
-          //   BottomNavigationBarItem(icon: Icon(Icons.atm), label: 'ATM')
-          // ],
-          // currentIndex: _currentIndex,
-          // onTap: (value) => _pages[value],),
           body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.dark,
         child: Column(
