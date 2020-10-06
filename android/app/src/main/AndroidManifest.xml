@@ -10,8 +10,8 @@
         android:label="appsensi_test"
         android:icon="@mipmap/ic_launcher">
         <meta-data
-            android:name="com.google.android.geo.AIzaSyB7az4zI-GzSiUxcZZeFz-MI3iFxte5EAg"
-            android:value="AIzaSyB7az4zI-GzSiUxcZZeFz-MI3iFxte5EAg"
+            android:name="com.google.android.geo.API KEY"
+            android:value="API KEY"
             />
         <activity
             android:name=".MainActivity"
